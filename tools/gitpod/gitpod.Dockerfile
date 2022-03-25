@@ -34,10 +34,12 @@ COPY --from=clone --chown=gitpod /tmp/numpy ${WORKSPACE}
 WORKDIR ${WORKSPACE}
 
 # Build numpy to populate the cache used by ccache
+# esbonio for doc generation preview
 RUN git submodule update --init --depth=1 -- numpy/core/src/umath/svml
 RUN conda activate ${CONDA_ENV} && \ 
     python setup.py build_ext --inplace && \
-    ccache -s
+    ccache -s && \
+    pip install esbonio
 
 # Gitpod will load the repository into /workspace/numpy. We remove the
 # directory from the image to prevent conflicts
