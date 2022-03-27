@@ -29,7 +29,7 @@ dependencies:
   - pandas
   - matplotlib
   - pydata-sphinx-theme=0.7.2
-  - breathe
+  - breathe=4.31.0 #pinned until version > 4.33.0 is default for conda
   # For linting
   - pycodestyle=2.7.0
   - gitpython
