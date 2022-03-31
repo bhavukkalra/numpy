@@ -36,6 +36,7 @@ WORKDIR ${WORKSPACE}
 # Build numpy to populate the cache used by ccache
 RUN git submodule update --init --depth=1 -- numpy/core/src/umath/svml
 RUN conda activate ${CONDA_ENV} && \ 
+    pyton -m pip install esbonio && \
     python setup.py build_ext --inplace && \
     ccache -s
 
